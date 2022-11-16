@@ -1,19 +1,28 @@
-import ListaTareas from "./ListaTareas";
+import React from "react";
+import "../App.css";
 
-const Tarea = (props) => {
-    const tarea = props.tarea;
+const Lista = ({ tareas }) => (
+    <ul>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Tarea</th>
+                <th>Estado</th>
+            </tr>
 
-    console.log(props,tarea);
-
-    return (
-        <div className="tarea">
-            {ListaTareas.map((tarea) => (
-                <div className="preview-tarea" key={tarea.id}>
-                    <h2>{ tarea.title }</h2>
-                </div>
+            {tareas.map((tarea) => (
+                <tr>
+                    <td> {tarea.id}</td>
+                    <td> {tarea.fecha}</td>
+                    <td> {tarea.nombre}</td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                </tr>
             ))}
-        </div>
-    );
-}
+        </table>
+    </ul>
+);
 
-export default Tarea;
+export default Lista;
