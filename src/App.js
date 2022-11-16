@@ -3,11 +3,11 @@ import ListaTareas from './components/ListaTareas';
 import Lista from './components/Tarea';
 
 const tareas = [
-  { id: 1, hecho: true, nombre: "Levantarme1", fecha: "1 de enero" },
-  { id: 2, hecho: true, nombre: "Desayunar1", fecha: "1 de enero" },
-  { id: 3, hecho: true, nombre: "Trabajar1", fecha: "1 de enero" },
-  { id: 4, hecho: true, nombre: "Dormir1", fecha: "1 de enero" },
-  { id: 5, hecho: false, nombre: "Morir1", fecha: "1 de enero" },
+  { id: 1, hecho: true, nombre: "Levantarme", fecha: "1 de enero" },
+  { id: 2, hecho: true, nombre: "Desayunar", fecha: "1 de enero" },
+  { id: 3, hecho: true, nombre: "Trabajar", fecha: "1 de enero" },
+  { id: 4, hecho: true, nombre: "Dormir", fecha: "1 de enero" },
+  { id: 5, hecho: false, nombre: "Morir", fecha: "1 de enero" },
 ];
 
 function App() {
