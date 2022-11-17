@@ -18,6 +18,8 @@ function App() {
         <Header title="Lista de Tareas" color="Green" />
       </header>
       <body>
+        <ListaTareas />
+        <Lista tareas={tareas} />
         <>
         <Contador />
         </>
