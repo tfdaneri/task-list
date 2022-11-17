@@ -19,5 +19,3 @@ const ListaTareas = ({ lista }) => (
         </li>
     </ol>
 )
-
-export default ListaTareas;
