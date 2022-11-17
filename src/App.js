@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import ListaTareas from './components/ListaTareas';
 import Lista from './components/Tarea';
+import Contador from './components/Contador';
 
 const tareas = [
   { id: 1, hecho: true, nombre: "Levantarme", fecha: "1 de enero" },
@@ -17,8 +18,9 @@ function App() {
         <Header title="Lista de Tareas" color="Green" />
       </header>
       <body>
-        <ListaTareas />
-        <Lista tareas={tareas} />
+        <>
+        <Contador />
+        </>
       </body>
     </div>
   );
