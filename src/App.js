@@ -17,10 +17,7 @@ function App() {
         <Header title="Lista de Tareas" color="Green" />
       </header>
       <body>
-        <h2>Listado Estático:</h2>
-        <Lista tareas={tareas} />
-        <></>
-        <h2>Listado Modificable:</h2>
+        <h2>Listado Modificable con Hooks:</h2>
         <ListaVariable />
       </body>
     </div>

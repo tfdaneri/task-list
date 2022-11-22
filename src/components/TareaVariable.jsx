@@ -1,17 +1,44 @@
 import React, {useState} from "react";
 import "../App.css";
-
-const tareas = [
-    { id: 1, hecho: true, nombre: "Levantarme", fecha: "1 de enero" },
-    { id: 2, hecho: true, nombre: "Desayunar", fecha: "1 de enero" },
-    { id: 3, hecho: true, nombre: "Trabajar", fecha: "1 de enero" },
-    { id: 4, hecho: true, nombre: "Dormir", fecha: "1 de enero" },
-    { id: 5, hecho: false, nombre: "Morir", fecha: "1 de enero" },
-  ];
+import useModificarlista from '../hooks/useModificarlista';
 
 function ListaVariable () {
-    const [list, setList] = useState(tareas);
-
+    const {
+      tareas,
+      crearTarea,
+      setTareas,
+      eliminarTarea,
+      actualizaTarea,
+    } = useModificarlista();
+  
+    const [nombreTarea, setNombreTarea] = useState("");
+    const cambiarNombre = (event) => {
+      setNombreTarea(event.target.value);
+  
+      console.log("value is:", event.target.value);
+    };
+  
+    const [fechaTarea, setFechaTarea] = useState("");
+    const cambiarFecha = (event) => {
+      setFechaTarea(event.target.value);
+  
+      console.log("value is:", event.target.value);
+    };
+  
+    const [hechoTarea, setHechoTarea] = useState("");
+    const cambiarEstado = (event) => {
+      setHechoTarea(event.target.checked);
+  
+      console.log("value is:", event.target.checked);
+    };
+  
+    const [idTarea, setIdTarea] = useState("");
+    const cambiarID = (event) => {
+      setIdTarea(event.target.value);
+  
+      console.log("value is:", event.target.value);
+    };
+    
     return (
         <>
             <table>
@@ -20,12 +47,13 @@ function ListaVariable () {
                     <th>Nombre</th>
                     <th>Fecha</th>
                     <th>Estado</th>
-                    <th>Cambiar Estado</th>
+                    <th></th>
+                    <th>Eliminar</th>
                 </tr>
-                {list.map(({id, nombre, fecha, hecho}) => (
+                {tareas.map(({id, nombre, fecha, hecho}) => (
                     <tr>
                         <td>{id}</td>
-                        <td>{nombre}</td>
+                        <td>{nombre}</td    >
                         <td>{fecha}</td>
                         <td>{hecho ? "Completado" : "Pendiente"}</td>
                         <td>
@@ -33,8 +61,8 @@ function ListaVariable () {
                                 type="checkbox"
                                 checked={hecho}
                                 onClick={() => {
-                                    setList(
-                                        list.map((obj) => {
+                                    setTareas(
+                                        tareas.map((obj) => {
                                             if (obj.id == id) {
                                                 return {
                                                     ...obj,
@@ -48,9 +76,23 @@ function ListaVariable () {
                                 }}
                             />
                         </td>
+                        <td key={id} onClick={() => eliminarTarea(id)}>
+                                <p>eliminar</p>
+                        </td>
                     </tr>
                 ))}
             </table>
+            <div className="form">
+                <button onClick={() => crearTarea(nombreTarea, fechaTarea, hechoTarea)}>
+                    Añadir Tarea
+                </button>
+                <button onClick={() => actualizaTarea(nombreTarea, fechaTarea, hechoTarea, idTarea)}>
+                    Modificar Tarea
+                </button>
+                <input type={"text"} onChange={cambiarNombre} placeholder="Anotar tarea..." />
+                <input type={"text"} value={fechaTarea} onChange={cambiarFecha} placeholder="Anotar plazo..."/>
+                <input type={"text"} value={idTarea} onChange={cambiarID} placeholder="Indicar ID de tarea a modificar..." />
+            </div>
         </>
     );
 }
